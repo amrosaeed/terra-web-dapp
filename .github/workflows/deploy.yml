@@ -20,8 +20,7 @@ jobs:
 
       - name: Build terra-web-dapp
         run: npm run build
-        env:
-          REACT_APP_GIT_SHA: ${{ github.sha }}
+
 
 
       - name: Deploy to Skynet
