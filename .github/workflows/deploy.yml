@@ -16,10 +16,10 @@ jobs:
           node-version: 16.x
 
       - name: Install dependencies
-        run: yarn
+        run: npm install
 
       - name: Build webapp
-        run: yarn build
+        run: npm run build
 
       - name: Deploy to Skynet
         uses: SkynetLabs/deploy-to-skynet-action@v2
