@@ -21,12 +21,11 @@ jobs:
       - name: Build terra-web-dapp
         run: npm run build
 
-      - name: Deploy to Skynet
-        uses: kwypchlo/deploy-to-skynet-action@main
+      - name: "Deploy to Skynet"
+        uses: SkynetLabs/deploy-to-skynet-action@v2
         with:
           upload-dir: build
           github-token: ${{ secrets.GITHUB_TOKEN }}
-          registry-seed: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' && secrets.REGISTRY_SEED || ‘’ }}
-          
+          registry-seed: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' && secrets.REGISTRY_SEED || '' }}
           
 
