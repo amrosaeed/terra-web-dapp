@@ -23,12 +23,11 @@ jobs:
 
       - name: Deploy to Skynet
         uses: SkynetLabs/deploy-to-skynet-action@v2
-        env:
-          REACT_APP_GIT_SHA: ${{ github.sha }}
         with:
-          upload-dir: build
+          upload-dir: public
           github-token: ${{ secrets.GITHUB_TOKEN }}
-          registry-seed: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' && secrets.REGISTRY_SEED || '' }}
+          registry-seed: ${{ secrets.REGISTRY_SEED || '' }}
+          registry-datakey: ${{ secrets.REGISTRY_DATAKEY || '' }}
           
           
           
