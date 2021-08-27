@@ -2,7 +2,8 @@ name: Deploy to Skynet
 
 on:
   pull_request:
-  
+  branches:
+     - main
 
 jobs:
   build:
