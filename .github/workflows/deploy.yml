@@ -21,7 +21,7 @@ jobs:
       - name: Build terra-web-dapp
         run: npm run build
 
-      — name: Deploy to Skynet
+      - name: Deploy to Skynet
         uses: kwypchlo/deploy-to-skynet-action@main
         with:
           upload-dir: build
