@@ -1,4 +1,4 @@
-name: Deploy to Skynet
+name: My CI Pipeline
 
 on:
   pull_request:
@@ -11,17 +11,20 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-      - uses: Use Node.js
-        uses: actions/setup-node@v1
+      - uses: actions/setup-node@v2
         with:
-          node-version: "14.x"
+          node-version: 16.x
 
       - name: Install dependencies
-        run: npm install
+        run: yarn
 
-      - name: Run unit tests
-        run: npm test
+      - name: Build webapp
+        run: yarn build
 
-      - name: Build
-        run: npm run build
+      - name: Deploy to Skynet
+        uses: SkynetLabs/deploy-to-skynet-action@v2
 
+        with:
+          upload-dir: public
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          registry-seed: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' && secrets.REGISTRY_SEED || '' }}
